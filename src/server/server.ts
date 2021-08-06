@@ -20,14 +20,19 @@ class App {
 
         this.server = new http.Server(app);
         this.io = new socketIO.Server(this.server)
+
         this.io.on('connection', function(socket: socketIO.Socket) {
             console.log('New user connected.'+ socket.id);
             socket.emit("message", "Hello " + socket.id);
+
+            socket.broadcast.emit("message", "Everybody, say hello to " + socket.id);
 
             socket.on('disconnect', function () {
                 console.log('socket disconnected: ' + socket.id);
             }); 
         })
+
+        
     }
 
     public Start() {

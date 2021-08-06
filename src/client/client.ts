@@ -1,12 +1,18 @@
-//import { io, Socket } from 'socket.io-client';
-//import socketIOClient from "socket.io-client"
-import {io} from 'socket.io-client';
+//import { io } from "socket.io-client";
 
-//const socket = io('http://127.0.0.1:3000');
-const socket = io();
+class Client {
+    //private url = 'http://127.0.0.1:3000';
+    //private socket = io(this.url);
+    //private socket2: SocketIOClient.Socket
+    //private socket: socketIO.Socket
 
-socket.on("message", function (message: any) {
-    console.log(message)
-    document.body.innerHTML = message
-})
+    constructor() {
+        this.socket = io();
+        this.socket.on("message", function (message: any) {
+            console.log(message)
+            document.body.innerHTML = message
+        })
+    }
+}
 
+const client = new Client();

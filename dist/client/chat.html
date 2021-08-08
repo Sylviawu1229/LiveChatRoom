@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Sylvia's real-time chat room</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <style>
+        .Panel {
+            position: relative;
+            border: solid 1px gray;
+            height: 400px;
+            border-radius: 0px 20px 4px 20px;
+            box-shadow: 15px 10px #dddddd;
+        }
+
+        #Panel0 {
+            display: block;
+            background: linear-gradient(56deg, rgba(225, 238, 255, 0.492) 0%, rgba(122, 67, 250, 0.495) 100%);
+        }
+
+        .chatPanel {
+            border: solid 1px gray;
+            height: 400px;
+            border-radius: 20px 0px 4px 4px;
+            box-shadow: 15px 10px #dddddd;
+            background: rgb(34, 193, 195);
+            background: linear-gradient(56deg, rgba(34, 193, 195, 0.49193275943189773) 0%, rgba(253, 187, 45, 0.494733879880077) 100%);
+            position: relative;
+        }
+
+        .chatMessageInputDiv {
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+        }
+
+        .messages {
+            padding-left: 0;
+            overflow: hidden;
+            height: 340px;
+            margin-bottom: 40px;
+        }
+
+        .messages li {
+            list-style-type: none;
+            margin-bottom: 30px;
+            padding: 6px 6px 6px 6px;
+            display: block
+        }
+
+        .otherMessage {
+            background: #fdffa3;
+            border: solid 1px gray;
+            margin: 0px 5px 5px 0px;
+            float: left;
+            padding: 0px 6px 0px 6px;
+            border-radius: 10px 10px 10px 0;
+        }
+
+        .otherCircle {
+            padding: 6px;
+            background: rgb(243, 196, 95);
+            border-radius: 50px;
+            float: left;
+        }
+
+        .myMessage {
+            background: #c8f3e8;
+            border: solid 1px gray;
+            margin: 0px 5px 5px 5px;
+            float: right;
+            padding: 0px 6px 0px 6px;
+            border-radius: 10px 10px 0 10px;
+        }
+
+        .myCircle {
+            padding: 6px;
+            background: rgb(138, 235, 214);
+            border-radius: 50px;
+            float: right;
+        }
+
+        .screenName {
+            padding: 6px 6px 6px 6px;
+            border-radius: 10px 10px 10px 10px;
+            font-weight: bold;
+            background: #eec5f3;
+        }
+
+        .jumbotron {
+            margin-top: 40px;
+            height: 80px;
+        }
+
+        .footer {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <h1>Real Time Chat Room</h1>
+    </div>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link fs-5" href="#" onclick="client.showOption(0)">💬Chat</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top:50px">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="Panel" id="Panel0">
+                    <h2 id="Title">🙍Online INFO</h2>
+                    <div class="p-6"> Your name is <span class="screenName"></span></div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="chatPanel">
+                    <ol id="messages" class="messages">
+                    </ol>
+                    <div class="chatMessageInputDiv">
+                        <div class="input-group">
+                            <input class="form-control width100" id="messageText" placeholder="Enter Chat Message"
+                                onkeyup="">
+                            <span class="input-group-btn">
+                                <button class="btn btn-info" onclick="client.sendMessage()">Send</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer text-center" style="margin-bottom:0">
+        Built by Wu Szu Ying 2021.08
+    </div>
+
+    <script src="jquery/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+
+</body>
+
+</html>

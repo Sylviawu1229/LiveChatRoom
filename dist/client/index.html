@@ -1,13 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>TypeScript Socket.IO Course</title>
+    <meta charset="utf-8">
+    <title>Sylvia's real-time chat room</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+	<style>
+	    .jumbotron {
+            margin-top: 40px;
+            height: 80px;
+        }
+
+        .footer {
+            margin-top: 50px;
+        }
+    </style>	
 </head>
 
-<body>
-    <script src="socket.io/socket.io.js"></script>
-    <script type="module" src="./client.js"></script>
-</body>
 
+	<body>
+		<div class="jumbotron text-center" style="margin-bottom:0">
+			<h1>Real Time Chat Room</h1>
+		</div>
+
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<ul class="navbar-nav">
+				</ul>
+			</div>
+		</nav>
+
+
+		<div class="join-container">
+			<main class="join-main">
+				<form action="chat.html">
+					<div class="form-control text-center">
+						<label for="username">Username</label>
+						<input
+							type="text"
+							name="username"
+							id="username"
+							placeholder="Enter username..."
+							required
+						/>
+					<button type="submit" class="btn btn-info" >Join Chat Room</button>
+				</form>
+			</main>
+		</div>
+
+	<div class="footer text-center" style="margin-bottom:0">
+		Built by Wu Szu Ying 2021.08
+	</div>
+
+	<script src="jquery/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="socket.io/socket.io.js"></script>
+	<script src="client.js"></script>
+
+
+	</body>
 </html>

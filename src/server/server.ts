@@ -19,21 +19,23 @@ class App {
         app.use('/bootstrap', express.static(path.join(__dirname, '../../node_modules/bootstrap/dist')))
 
         this.server = new http.Server(app)
-        this.io = new socketIO.Server(this.server);
+        this.io = new socketIO.Server(this.server)
 
         this.io.on('connect', (socket: socketIO.Socket) => {
             console.log('A user connected : ' + socket.id)
             let screenName: string = "unknowUser"
 
             socket.emit("screenName", screenName)
+            
 
             socket.on('disconnect', function () {
-                console.log('A user disconnected : ' + socket.id);
-            });
+                console.log('A user disconnected : ' + socket.id)
+            })
 
             socket.on('chatMessage', function (chatMessage: ChatMessage) {
                 socket.broadcast.emit('chatMessage', chatMessage)
-            });
+            })
+
         })
     }
 

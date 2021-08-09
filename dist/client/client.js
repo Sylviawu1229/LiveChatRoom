@@ -20,15 +20,21 @@ class Client {
         this.socket.on("connect", function () {
             console.log("connect");
         });
-        this.socket.on("disconnect", function (message) {
-            console.log("disconnect " + message);
-            //location.reload();
+        //this.socket.emit("chatMessage", <ChatMessage>{message: userName+" joins the room", from: "SYSTEM", type: "systemMessage" })
+        this.socket.on("disconnect", function () {
+            console.log("disconnect");
+            //location.reload()
         });
         this.socket.on("screenName", function () {
             $(".screenName").text(userName);
         });
         this.socket.on("chatMessage", (chatMessage) => {
-            $("#messages").append("<li><div class='float-start text-black-50'>[" + datetime + "] </div><br>" + "<span class='otherCircle'>" + chatMessage.from + "</span><div class='otherMessage'> " + chatMessage.message + "</div></li>");
+            if (chatMessage.type === 'systemMessage') {
+                $("#messages").append("<li><div class='float-start text-black-50'>[" + datetime + "] " + chatMessage.message + "</div></li>");
+            }
+            else {
+                $("#messages").append("<li><div class='float-start text-black-50'>[" + datetime + "] </div><br>" + "<span class='otherCircle'>" + chatMessage.from + "</span><div class='otherMessage'> " + chatMessage.message + "</div></li>");
+            }
             this.scrollChatWindow();
         });
         $(document).ready(() => {

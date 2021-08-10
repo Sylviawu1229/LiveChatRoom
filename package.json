@@ -1,5 +1,5 @@
 {
-  "name": "tssocktutorial",
+  "name": "real-time_chat_room",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -7,7 +7,7 @@
     "dev": "concurrently -k \"tsc -p ./src/server -w\" \"tsc -p ./src/client -w\" \"nodemon ./dist/server/server.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Sean Bradley",
+  "author": "Wu Szu Ying",
   "license": "ISC",
   "dependencies": {
     "@types/bootstrap": "^5.1.0",

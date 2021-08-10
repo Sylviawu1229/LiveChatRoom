@@ -1,5 +1,6 @@
 # LiveChatRoom
-node.js, typescript, socketIO, express, bootstrap, jquery
+server: node.js, typescript, socketIO, express
+client: socket.io-client, bootstrap, jquery
 
     |-- dist
         |-- client
@@ -7,11 +8,6 @@ node.js, typescript, socketIO, express, bootstrap, jquery
     |-- src
         |-- client
         |-- server
-
-* Install package first time
-```
-$ npm install
-```
 
 * Install package
 ```
@@ -27,3 +23,5 @@ $ npm run start
 ```
 $ npm run dev
 ```
+
+Then visit http://127.0.0.1:3000

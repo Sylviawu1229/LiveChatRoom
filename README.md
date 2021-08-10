@@ -1,5 +1,5 @@
 # LiveChatRoom
-server: node.js, typescript, socketIO, express
+server: node.js, typescript, socketIO, express  
 client: socket.io-client, bootstrap, jquery
 
     |-- dist

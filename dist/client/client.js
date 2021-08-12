@@ -1,8 +1,5 @@
-var now = new Date();
-var datetime = now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + now.getDate();
-datetime += ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
-var url = new URL(location.href);
-var userName = url.searchParams.get('username');
+let url = new URL(location.href);
+let userName = url.searchParams.get('username');
 class Client {
     constructor() {
         this.scrollChatWindow = () => {
@@ -29,6 +26,8 @@ class Client {
             $(".screenName").text(userName);
         });
         this.socket.on("chatMessage", (chatMessage) => {
+            let now = new Date();
+            let datetime = now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + now.getDate() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
             if (chatMessage.type === 'systemMessage') {
                 $("#messages").append("<li><div class='float-start text-black-50'>[" + datetime + "] " + chatMessage.message + "</div></li>");
             }
@@ -50,6 +49,8 @@ class Client {
     }
     sendMessage() {
         let messageText = $("#messageText").val();
+        let now = new Date();
+        let datetime = now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + now.getDate() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
         if (messageText.toString().length > 0) {
             this.socket.emit("chatMessage", { message: messageText, from: userName });
             $("#messages").append("<li><div class='float-end text-black-50'>[" + datetime + "] </div><br>" + "<span class='myCircle'>" + userName + "</span><div class='myMessage'>" + messageText + "</div></li>");
